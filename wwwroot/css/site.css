@@ -1,0 +1,90 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+
+div.app {
+
+    display: grid;
+    grid-template-columns: min-content 75%;
+
+    column-gap: 0;
+    padding: 0px;
+    margin: 0px;
+}
+
+#Sidebar {
+    display: grid;
+    grid-template-columns: min-content min-content;
+
+    margin: 0 10px 0 0;
+    padding-right: 10px;
+    
+    border-right: 1px solid black;
+}
+
+div.Sections, div.Boards  {
+
+}
+
+div.side_nav_item {
+    margin: 0 0 5px 0;
+    border-left: 5px solid black;
+}
+
+#current_book {
+    margin: 0 0 5px 0;
+    border-left: 5px solid blue;
+}
+
+p.side_nav_item_content {
+    white-space: nowrap;
+    margin: 0;
+    padding: 0 10px 0 10px;
+}
+
+
+
+#Noteboard {
+    position: relative;
+}
+
+div.note {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
+
+div.note:hover {
+    background-color: darkseagreen;
+}
+
+div.note p {
+    padding: 5px;
+    margin: auto;
+}
+
+/* Note ID's */
+#note1 {
+    left: 100px;
+    top: 100px;
+}
