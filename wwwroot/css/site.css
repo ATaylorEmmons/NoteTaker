@@ -81,6 +81,7 @@ div.note:hover {
 div.note p {
     padding: 5px;
     margin: auto;
+    user-select: none;
 }
 
 /* Note ID's */

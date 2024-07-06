@@ -10,44 +10,50 @@ function startup() {
 
     for (let i = 0; i < notes.length; i++) {
         notes[i].addEventListener("mousedown", startDrag);
-        notes[i].addEventListener("mouseup", stopDrag);
     }
+
 }
+
 
 function startDrag(event) {
-    let note = event.currentTarget
-    note.addEventListener("mousemove", onDragNote)
-}
 
-function stopDrag(event) {
-    let note = event.currentTarget
-    note.removeEventListener("mousemove", onDragNote)
-}
+    let currentNote = event.currentTarget
+    window.addEventListener("mousemove", onDragNote)
 
-function boxTest(x, y, maxX, maxY) {
-    let retX = x;
-    let retY = y;
+    function stopDrag(event) {
+        currentNote = null
+        window.removeEventListener("mousemove", onDragNote)
+    }
 
-    if (x < 0) { retX = 0 }
-    if (y < 0) { retY = 0 }
+    function boxTest(x, y, maxX, maxY) {
+        let retX = x;
+        let retY = y;
 
-    return [retX, retY]
-}
+        if (x < 0) { retX = 0 }
+        if (x > maxX) { retX = maxX }
+        if (y < 0) { retY = 0 }
 
-function onDragNote(event) {
-    let Noteboard = document.getElementById('Noteboard');
+        return [retX, retY]
+    }
 
-    let note = event.currentTarget;
-    let style = window.getComputedStyle(note);
+    function onDragNote(event) {
 
-    let moveTo = boxTest(
-        parseInt(style.left) + event.movementX,
-        parseInt(style.top) + event.movementY,
-        Noteboard.clientWidth,
-        Noteboard.clientHeight)
+        window.addEventListener("mouseup", stopDrag);
 
-    note.style.left = `${moveTo[0]}px`;
-    note.style.top = `${moveTo[1]}px`;
+        let Noteboard = document.getElementById('Noteboard');
+
+        let note = currentNote
+        let style = window.getComputedStyle(note);
+
+        let moveTo = boxTest(
+            parseInt(style.left) + event.movementX,
+            parseInt(style.top) + event.movementY,
+            Noteboard.clientWidth,
+            Noteboard.clientHeight)
+
+        note.style.left = `${moveTo[0]}px`;
+        note.style.top = `${moveTo[1]}px`;
+    }
 }
 
 window.addEventListener('load', startup());
