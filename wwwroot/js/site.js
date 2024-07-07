@@ -9,20 +9,56 @@ function startup() {
     let notes = Noteboard.getElementsByClassName('note');
 
     for (let i = 0; i < notes.length; i++) {
-        notes[i].addEventListener("mousedown", startDrag);
+        let header = notes[i].getElementsByClassName("note-header")[0]
+        header.addEventListener("mousedown", startDrag);
+
+        let content = notes[i].getElementsByClassName("note-input")[0]
+        content.addEventListener("dblclick", startEdit);
+
+        let handle = notes[i].getElementsByClassName("note-handle")[0]
+        handle.addEventListener("mousedown", startResize)
     }
 
+}
+
+function startEdit(event) {
+
+    event.currentTarget.readOnly = false;
+    alert("wo")
+}
+
+function startResize(event) {
+    let curTextArea = event.currentTarget.parentElement.getElementsByClassName("note-input")[0]
+    let startDragX = event.clientX
+
+    window.addEventListener("mousemove", onDragResize)
+    window.addEventListener("mouseup", stopDragResize)
+
+    function stopDragResize(event) {
+        curTextArea = null
+        window.removeEventListener("mousemove", onDragResize)
+    }
+
+    function onDragResize(event) {
+
+        let newSize = curTextArea.offsetWidth + event.movementX;
+        curTextArea.style.width = `${newSize}px`
+
+    }
 }
 
 
 function startDrag(event) {
 
-    let currentNote = event.currentTarget
+    let currentNote = event.currentTarget.parentElement
+
     window.addEventListener("mousemove", onDragNote)
+    window.addEventListener("mouseup", stopDrag);
 
     function stopDrag(event) {
         currentNote = null
         window.removeEventListener("mousemove", onDragNote)
+
     }
 
     function boxTest(x, y, maxX, maxY) {
@@ -37,8 +73,6 @@ function startDrag(event) {
     }
 
     function onDragNote(event) {
-
-        window.addEventListener("mouseup", stopDrag);
 
         let Noteboard = document.getElementById('Noteboard');
 

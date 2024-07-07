@@ -69,23 +69,49 @@ p.side_nav_item_content {
 }
 
 div.note {
+    display: grid;
+    grid-template-columns: 1fr 5px;
+    grid-template-rows: 10px 1fr;
+
     position: absolute;
     left: 0px;
     top: 0px;
+
+    border: 1px solid grey;
+
 }
 
-div.note:hover {
-    background-color: darkseagreen;
+
+
+div.note-header {
+    grid-area: 1 / 1 / 2 / 3;
+    background-color: cadetblue;
+    cursor: move;
 }
 
-div.note p {
-    padding: 5px;
-    margin: auto;
-    user-select: none;
+    div.note-header:hover {
+        background-color: darkseagreen;
+    }
+
+
+div.note-content {
+    grid-area: 2 / 1 / 3 / 2;
 }
 
-/* Note ID's */
-#note1 {
-    left: 100px;
-    top: 100px;
+    .note-input {
+        outline: none;
+        border: none;
+
+        padding: 5px;
+    }
+
+    .note-input:focus {
+        outline: none;
+    }
+
+
+div.note-handle {
+    grid-area: 2 / 2 / 3 / 3;
+    background-color: white;
+    cursor: e-resize;
 }
