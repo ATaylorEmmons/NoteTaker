@@ -24,7 +24,6 @@ function startup() {
 function startEdit(event) {
 
     event.currentTarget.readOnly = false;
-    alert("wo")
 }
 
 function startResize(event) {
@@ -90,4 +89,4 @@ function startDrag(event) {
     }
 }
 
-window.addEventListener('load', startup());
+window.addEventListener('load', initilize());

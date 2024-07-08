@@ -10,13 +10,13 @@
 
         <div class="Sections">
             <div id="current_book" class="section  side_nav_item">
-                <p class="side_nav_item_content">Section 1</p>
+                <p class="side_nav_item_content">Book 1</p>
             </div>
             <div class="section side_nav_item">
-                <p class="side_nav_item_content">Section 2</p>
+                <p class="side_nav_item_content">Book 2</p>
             </div>
             <div class="section side_nav_item">
-                <p class="side_nav_item_content">Section 3</p>
+                <p class="side_nav_item_content">Book 3</p>
             </div>
         </div>
 
@@ -36,7 +36,7 @@
 
     <div id="Noteboard">
 
-        <div id="note1" class="note">
+        <div id="book1_outline_note1" class="note">
 
             <div class="note-header">
 
@@ -51,4 +51,14 @@
         </div>
 
     </div>
+
+    <script src="~/js/NoteModel.js" asp-append-version="true"></script>
+    <script src="~/js/NoteView.js" asp-append-version="true"></script>
+    <script src="~/js/Notebook.js" asp-append-version="true"></script>
+    <script id="book1_outline_note1_json" type="application/json">
+        [{"id": "book1_outline_note1", 
+        "top": 100, "left": 100, "width": 100, "height": 100,
+        "text": "this is some content"}]
+    </script>
 </div>
+
