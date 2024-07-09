@@ -1,3 +1,4 @@
+
 class NoteView {
     constructor(_noteModel) {
         this.model = _noteModel;
@@ -13,6 +14,8 @@ class NoteView {
 
         this.handle = this.root.getElementsByClassName("note-handle")[0];
         this.handle.addEventListener("mousedown", startResize);
+
+
     }
 
     startEdit(event) {
@@ -22,7 +25,7 @@ class NoteView {
 
 
     startResize(event) {
-
+        
         let startDragX = event.clientX
 
         window.addEventListener("mousemove", onDragResize)
@@ -43,13 +46,12 @@ class NoteView {
 
 
     startDrag(event) {
-
         window.addEventListener("mousemove", onDragNote)
         window.addEventListener("mouseup", stopDrag);
 
+
         function stopDrag(event) {
             window.removeEventListener("mousemove", onDragNote)
-
         }
 
         function boxTest(x, y, maxX, maxY) {
